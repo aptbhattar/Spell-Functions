@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Task </title>
+<style>
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+<h1>Spell Functions</h1>
+<textarea id="enter" cols="50" rows="5"></textarea>
+<input type="button" value="SUBMIT" onclick=run() id="hl"/>
+<h1>Vowel</h1>
+<p id="vowel"></p>
+<h1>Consonant</h1>
+<p id="consonant"></p>
+<h1>Special</h1>
+<p id="special"><p>
+<h1>Space</h1>
+<p id="space"></p>
+<script>
+function vowel(s)
+{
+var list="aAeEiIoOuU";
+var count=0;
+var i=0;
+var j=0;
+for(i=0;i<s.length;i++)
+{
+for(j=0;j<list.length;j++)
+	{
+		if (s[i]==list[j])
+			{
+				count=count+1;
+			}
+	}
+}
+		return count;
+}
+
+function consonant(s)
+{
+var list="qQwWrRtTyYpPsSdDfFgGhHjJkKlLzZxXcCvVbBnNmM";
+var count=0;
+var i=0;
+var j=0;
+for(i=0;i<s.length;i++)
+{
+for(j=0;j<list.length;j++)
+	{
+		if (s[i]==list[j])
+			{
+				count=count+1;
+			}
+	}
+}
+return count;
+}
+
+function space(s)
+{
+var count=0;
+count=(s.split(" ").length-1);
+return count;
+}
+
+function special(s)
+{
+var count;
+var a=vowel(s)+consonant(s)+space(s);
+count=s.length-a;
+return count;
+}
+
+function run()
+{
+var s=document.getElementById("enter").value;
+var v=vowel(s);
+var c=consonant(s);
+var sc=space(s);
+var sp=special(s);
+document.getElementById("vowel").innerHTML ="Vowel: "+v;
+document.getElementById("consonant").innerHTML ="Consonant: "+c;
+document.getElementById("space").innerHTML ="Space: "+sc;
+document.getElementById("special").innerHTML ="Special: "+sp;
+}
+</script>
+</body>
+</html>
